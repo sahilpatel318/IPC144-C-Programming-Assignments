@@ -1,0 +1,74 @@
+///////////////////////////////////////////////////////////////////////////
+                              Reflection
+                          Workshop - #2 (P2)
+Full Name  : SAHIL HARESHBHAI PATEL
+Student ID#: 173793225
+Email      : shpatel27@myseneca.ca
+Section    : NJJ
+
+Authenticity Declaration:
+
+I declare this submission is the result of my own work and has not been
+shared with any other student or 3rd party content provider. This submitted
+piece of work is entirely of my own creation.
+///////////////////////////////////////////////////////////////////////////
+
+Question 1: Execute the following code on your machine and record the result:
+
+Answer:
+
+(a)
+
+First code answer:
+
+a = 4
+
+second code answer :
+
+a = 3
+
+(b)
+
+the given a++ function increases the value before printing and then the print function prints a = 4
+
+the provided a++ passes the given value of a and after that increases by 1 value and then the printf function gets implemented so a = 3
+
+the major difference between both codes:
+
+1) print the value after increasing it
+2) print the value before increasing the value.
+
+Question 2:
+
+Answer:
+
+Of course, according to the image you shared, the code snippet is to calculate the cent value of two float variables price1 and price3 and two double variables price 2 and price 4. It then prints these values out.
+
+undefined
+
+Data type: price1 is a float, which often cannot store the exact decimal representation of the value assigned to it (namely 10. 11f) because it is precise to a certain number of decimal places only.
+
+Integer conversion: The formula for converting the float value to cents is as follows: float amount_in_cents = (float)VALUE * 100; This casting removes the decimal part and may result to loss of data.
+
+Therefore, it is possible that after the conversion, price1 will have a slightly different value to what was expected, while price2, which was declared as a double, it has less chance of suffering from such a problem.
+
+Question 3 :
+
+Yes, judging by the code in the image, it takes the cent value of four variables (price1 to price4 inclusive) and then prints the calculated values out.
+
+Rounding Issues:
+
+It is declared by a float which sometimes gives rounding errors due to its capability to represent decimal numbers up to a certain limit.
+
+price2 and price4 variables are declared as double hence the resulting values are least affected by rounding errors.
+
+Conversion:
+
+The code gives the values the format cents multiplied by 100 and then converted into integers. What this casting does is that it rounds down on any decimals.
+
+Output:
+
+Because of the above factors, we may find that while passing through the loop in the end price1 is equal to price2 or price4 in cents slightly different values.
+
+
+
