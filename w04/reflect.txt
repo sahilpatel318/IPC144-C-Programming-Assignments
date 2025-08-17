@@ -1,0 +1,222 @@
+///////////////////////////////////////////////////////////////////////////
+                               Reflection
+                             Workshop - #4
+Full Name  : Sahil Hareshbhai Patel
+Student ID#: 173793225
+
+Authenticity Declaration:
+I declare this submission is the result of my own work and has not been
+shared with any other student or 3rd party content provider. This submitted
+piece of work is entirely of my own creation.
+///////////////////////////////////////////////////////////////////////////
+
+Answer 1:
+
+
+Practical Comparison
+
+While Loop:
+
+Use Case: Commendable when the tests determine that, probably, the iteration will not be present on the given loop at all. For instance, when a condition is tested before the actual starting of a loop, the condition is not necessarily run as a loop to the lowest degree.
+
+Example: Searching for a condition that at some point in time has probably been violated an example being testing for a certain value for instance if the value the user is entering is valid in order to proceed to the next level.
+
+Do/While Loop:
+
+Use Case: May be useful when the body within the loop must at the very least perform one iteration and an example includes when giving a prompt for the user’s input.
+
+Example: The process of an input validation which assumes that an input is expected to be delivered by a user, and a prompt is to be expected as well, at least before the verifying of the input’s correctness takes place.
+
+If the body of the loop has to be always executed at least once then the for each loops are used and on the other hand if the body of the loop does not have to be executed at least once the foreach loop is used. While a do/while loop is generally shorter, the reading of user input to which messages that want the user an input to be at least
+
+
+
+Answer 2: 
+
+In the provided code, there are multiple places which could be optimized if if/else if constructs – alternative path – were used instead of multiple ifs. Especially, while verifying the conditions for the chosen items (apples, oranges, pears, tomatoes, cabbages), the given logic employs the utilization of several if statements. This is so because if/else if allows one to avoid repetitive scans, which make the processes more proficient.
+
+Original Code with Multiple if Statements:
+
+
+
+// Picking stage for APPLES
+if (apples > 0) {
+    while (apples > 0) {
+        printf("Pick some APPLES... how many did you pick? : ");
+        scanf("%d", &picked);
+        if (picked <= 0) {
+            printf("ERROR: You must pick at least 1!\n");
+        }
+        else if (picked > apples) {
+            printf("You picked too many... only %d more APPLE(S) are needed.\n", apples);
+        }
+        else {
+            apples -= picked;
+            if (apples > 0) {
+                printf("Looks like we still need some APPLES...\n");
+            }
+            else {
+                printf("Great, that's the apples done!\n\n");
+            }
+        }
+    }
+}
+
+
+
+
+
+
+Improved Code with if/else if Statements:
+
+
+
+// Picking stage for APPLES
+if (apples > 0) {
+    while (apples > 0) {
+        printf("Pick some APPLES... how many did you pick? : ");
+        scanf("%d", &picked);
+        if (picked <= 0) {
+            printf("ERROR: You must pick at least 1!\n");
+        } else if (picked > apples) {
+            printf("You picked too many... only %d more APPLE(S) are needed.\n", apples);
+        } else {
+            apples -= picked;
+            if (apples > 0) {
+                printf("Looks like we still need some APPLES...\n");
+            } else {
+                printf("Great, that's the apples done!\n\n");
+            }
+        }
+    }
+}
+
+
+Explanation:
+
+Original Code: They are checked one by one using ‘if’ statement for corresponding result of the inspected every condition. If this is the case then one would expect the program to go on to check the next if statement even through the former if statement returned a true value.
+
+Improved Code: The ‘else if’ feature implies that as soon as one is able to locate true condition they are able to omit the rest of them. This reduces the time to do the comparisons, because once the condition is valid the other conditions cannot be valid either.
+
+
+Original code after else if
+
+// Picking stage for APPLES
+if (apples > 0) {
+    while (apples > 0) {
+        printf("Pick some APPLES... how many did you pick? : ");
+        scanf("%d", &picked);
+        if (picked <= 0) {
+            printf("ERROR: You must pick at least 1!\n");
+        } else if (picked > apples) {
+            printf("You picked too many... only %d more APPLE(S) are needed.\n", apples);
+        } else {
+            apples -= picked;
+            if (apples > 0) {
+                printf("Looks like we still need some APPLES...\n");
+            } else {
+                printf("Great, that's the apples done!\n\n");
+            }
+        }
+    }
+}
+
+// Repeat the same pattern for ORANGES, PEARS, TOMATOES, and CABBAGES
+
+// Picking stage for ORANGES
+if (oranges > 0) {
+    while (oranges > 0) {
+        printf("Pick some ORANGES... how many did you pick? : ");
+        scanf("%d", &picked);
+        if (picked <= 0) {
+            printf("ERROR: You must pick at least 1!\n");
+        } else if (picked > oranges) {
+            printf("You picked too many... only %d more ORANGE(S) are needed.\n", oranges);
+        } else {
+            oranges -= picked;
+            if (oranges > 0) {
+                printf("Looks like we still need some ORANGES...\n");
+            } else {
+                printf("Great, that's the oranges done!\n\n");
+            }
+        }
+    }
+}
+
+// Picking stage for PEARS
+if (pears > 0) {
+    while (pears > 0) {
+        printf("Pick some PEARS... how many did you pick? : ");
+        scanf("%d", &picked);
+        if (picked <= 0) {
+            printf("ERROR: You must pick at least 1!\n");
+        } else if (picked > pears) {
+            printf("You picked too many... only %d more PEAR(S) are needed.\n", pears);
+        } else {
+            pears -= picked;
+            if (pears > 0) {
+                printf("Looks like we still need some PEARS...\n");
+            } else {
+                printf("Great, that's the pears done!\n\n");
+            }
+        }
+    }
+}
+
+// Picking stage for TOMATOES
+if (tomatoes > 0) {
+    while (tomatoes > 0) {
+        printf("Pick some TOMATOES... how many did you pick? : ");
+        scanf("%d", &picked);
+        if (picked <= 0) {
+            printf("ERROR: You must pick at least 1!\n");
+        } else if (picked > tomatoes) {
+            printf("You picked too many... only %d more TOMATO(ES) are needed.\n", tomatoes);
+        } else {
+            tomatoes -= picked;
+            if (tomatoes > 0) {
+                printf("Looks like we still need some TOMATOES...\n");
+            } else {
+                printf("Great, that's the tomatoes done!\n\n");
+            }
+        }
+    }
+}
+
+// Picking stage for CABBAGES
+if (cabbages > 0) {
+    while (cabbages > 0) {
+        printf("Pick some CABBAGES... how many did you pick? : ");
+        scanf("%d", &picked);
+        if (picked <= 0) {
+            printf("ERROR: You must pick at least 1!\n");
+        } else if (picked > cabbages) {
+            printf("You picked too many... only %d more CABBAGE(S) are needed.\n", cabbages);
+        } else {
+            cabbages -= picked;
+            if (cabbages > 0) {
+                printf("Looks like we still need some CABBAGES...\n");
+            } else {
+                printf("Great, that's the cabbages done!\n\n");
+            }
+        }
+    }
+}
+
+This approach makes sure that once a true condition is met, the next conditions are not evaluated, thus saves more time than the other by doing away with worthless evaluation.
+
+
+
+Answer 3:
+
+Once a piece of software is written, its code needs to be formatted properly to enhance its readability and maintainability.
+
+1. Spacing The variation in spacing must be uniform, as indentation plays a critical role in establishing an easy-to-follow visual format. It provides a method of demarcating sections of code with relation to their loops, conditional statements, and functions. We are all aware that consistent indentation plays an important role to easily find out how many levels deep in a particular program we are in.
+
+2. Commenting: The comments used are clear and are made to help explain the code segments, loops or conditionals that are used within the program. By doing so, anyone attempting to peruse through the code will easily understand the intended functionality of each segment without much effort in order to figure out the flow of the code.
+
+3. According to the topic Meaningful Variable Names ,we can make the coding system to be self-explanatory by using the more descriptive variable names. The latter is perfectly clear even without the presence of comments – they include apples, oranges, continueShopping, and picked.
+
+4. Whitespace The white spaces, or blank lines between to, three or four sections of code that are developed assist in the creation of a less congested and more organized source. This comes in handy when it is required to create two loops or general structures of the program.
+
+5. The pros of having a consistent structure of loops and using conditionals are: The code is easier to read and understand since the structures are consistent throughout. This aspect assists in a faster identification of the patterns and the logical sequences which make up the code since the brain does not need to work too hard, since it has already been exercised by familiar patterns in the code.
