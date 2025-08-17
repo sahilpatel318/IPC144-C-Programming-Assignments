@@ -1,0 +1,40 @@
+///////////////////////////////////////////////////////////////////////////
+                               Reflection
+                             Workshop - #5
+Full Name  : Sahil Patel
+Student ID#: 173793225
+
+Authenticity Declaration:
+I declare this submission is the result of my own work and has not been
+shared with any other student or 3rd party content provider. This submitted
+piece of work is entirely of my own creation.
+///////////////////////////////////////////////////////////////////////////
+
+A1. No, we cannot use for loop to validate the rating values entered by the user because to use for loop, we should know how many times we need to iterate, but in this case we don't know.
+ So, as a result we should use do while instead.
+
+A2. I used the If-else-if ladder to print the month in the part 2 of the workshop because I am quite comfortable with if and else.
+ Even though using switch was a better option, but I am quite comfortable with If-else that's why I have used if-else-if.
+
+A3. We try to use macros and variables to represent information rather than hardcore "magic" numbers because 
+ 1. It increases the readability of the code and makes it easier for others to understand code.	
+ 2. It increases the maintainability of the code. For ex: If a user wants to change the value, it's much easier to update a single variable instead of changing at 10 locations.
+ 3. It increases ease-of-debugging because having a proper named variable make makes it easier to understand and follow the code.
+
+
+    do {
+        printf("Set the year and month for the well-being log (YYYY MM): ");
+        scanf("%d%d%*c", &year, &month);
+        if (year < MIN_YEAR || year > MAX_YEAR) {
+            printf("ERROR: The year must be between 2012 and 2022 inclusive\n");
+        }
+        if (month < 1 || month > 12) {
+            printf("ERROR: Jan.(1) - Dec.(12)\n");
+        }
+        if (year >= MAX_YEAR && year <= MIN_YEAR && month >= JAN && month <= DEC) {
+            flag = 1;
+        }
+    } while ((year < MIN_YEAR || year > MAX_YEAR) || (month < JAN || month > DEC) && flag != 1);
+
+In this code the variables MIN_YEAR and MAX_YEAR are very important. As they are given a proper name, it is easier for the user to understand the meaning of the variable. 
+Also, if i wanted to change the values then I would just change the variable and my value just gets changed.
