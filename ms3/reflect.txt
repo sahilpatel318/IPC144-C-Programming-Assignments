@@ -1,0 +1,163 @@
+/*/////////////////////////////////////////////////////////////////////////
+                        Assignment 1 - Milestone 3 (Reflection)
+
+Full Name  :Sahil Hareshbhai Patel
+Student ID#:173793225
+Email      :shpatel27@myseneca.ca
+Section    :NJJ
+
+Authenticity Declaration:
+I declare this submission is the result of my own work and has not been
+shared with any other student or 3rd party content provider. This submitted
+piece of work is entirely of my own creation.
+/////////////////////////////////////////////////////////////////////////*/
+
+ANS-1
+Code 1: Copying String Content
+The `inputCString` function manually copies string content from `example` to `cstring_value` using a loop. This can be replaced with the `strncpy` function from the string library.
+
+Original Code:
+for (no = no - 1; no > -1; no--) {
+    cstring_value[no] = example[no];
+}
+
+Replacement Code:
+strncpy(cstring_value, example, maxLength);
+cstring_value[maxLength] = '\0'; // Ensure null-termination
+
+Benefits:
+-Readability:Using `strncpy` makes the code easier to read and understand as it explicitly conveys the intention of copying a string.
+- Reliability:`strncpy` handles the copy operation in a standardized way, reducing the risk of off-by-one errors and ensuring proper handling of null-termination.
+- Efficiency:The library function is optimized and can be faster than a manually implemented loop, depending on the compiler optimizations and the underlying system.
+
+Code Snippet 2: Counting String Length
+The `inputCString` function counts the length of `example` using a manual loop. This can be replaced with the `strlen` function from the string library.
+
+Original Code:
+
+no = 0;
+while (example[no] != '\0') {
+    no++;
+}
+
+
+Replacement Code:
+no = strlen(example);
+
+
+Benefits:
+- Readability:`strlen` clearly indicates the purpose of measuring the length of a string, making the code more readable and maintainable.
+- Efficiency:The `strlen` function is typically optimized and can be more efficient than a manually written loop.
+- Standardization:Using standard library functions adheres to common coding practices and conventions, making the code more consistent with typical C programming standards.
+
+By utilizing string library functions, you enhance the readability, maintainability, and efficiency of your code, while also reducing the likelihood of errors. These benefits contribute to more robust and reliable software development.
+
+ANS-2
+String Copy Functions
+In C programming, two common functions for copying strings are `strcpy` and `strncpy`.
+
+-`strcpy`: This function copies a string from the source to the destination until it encounters a null character (`'\0'`). It does not check if the destination buffer is large enough, which can lead to buffer overflow if the source string is longer than the destination buffer.
+
+-`strncpy`: This function copies up to `n` characters from the source to the destination. It provides a safer approach as it limits the number of characters copied, reducing the risk of buffer overflow. However, it’s important to manually ensure the destination string is null-terminated, as `strncpy` may not null-terminate if the source string length equals or exceeds `n`.
+
+I used a manual loop to copy strings:
+
+for (i = 0; i < strlen(name) - 1; i++) {
+    patient->name[i] = name[i];
+}
+
+Preferred Function: Using `strncpy` is safer and more efficient. 
+
+Modified code:
+strncpy(patient->name, name, NAME_LEN - 1);
+patient->name[NAME_LEN - 1] = '\0'; // Ensure null-termination
+
+Explanation
+
+- Safety: `strncpy` limits the number of characters copied to `NAME_LEN - 1`, which helps prevent buffer overflow by ensuring you do not exceed the size of `patient->name`.
+- Null-Termination: The line `patient->name[NAME_LEN - 1] = '\0';` guarantees that the destination string is properly null-terminated, ensuring it can be safely used with other string functions.
+
+ANS-3
+Logic Applied:
+
+1. Data Structure Choice: Use a data structure that maintains order automatically or supports easy sorting. Common choices are:
+   - List: If using a list, you would need to sort it manually.
+   -Sorted List or Priority Queue**: These maintain order automatically.
+
+2.Sorting Mechanism: If using a list or an array, sort the list whenever an appointment is added, removed, or updated. For example, in C programming, you might use the `qsort` function to sort the list.
+
+3.Insertion Point: For more efficient management, you could use binary search to find the correct insertion point for a new appointment, thereby keeping the list sorted at all times.
+
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+// Define the appointment structure
+typedef struct {
+    char description[100];
+    int day;
+    int month;
+    int year;
+    int hour;
+    int minute;
+} Appointment;
+
+// Comparison function for qsort
+int compareAppointments(const void *a, const void *b) {
+    const Appointment *appt1 = (const Appointment *)a;
+    const Appointment *appt2 = (const Appointment *)b;
+
+    if (appt1->year != appt2->year)
+        return appt1->year - appt2->year;
+    if (appt1->month != appt2->month)
+        return appt1->month - appt2->month;
+    if (appt1->day != appt2->day)
+        return appt1->day - appt2->day;
+    if (appt1->hour != appt2->hour)
+        return appt1->hour - appt2->hour;
+    return appt1->minute - appt2->minute;
+}
+
+void addAppointment(Appointment appointments[], int *count, Appointment newAppt) {
+    appointments[*count] = newAppt;
+    (*count)++;
+    // Sort the list after adding a new appointment
+    qsort(appointments, *count, sizeof(Appointment), compareAppointments);
+}
+
+int main() {
+    Appointment appointments[100];
+    int count = 0;
+
+    // Add and sort appointments
+    Appointment appt1 = {"Meeting", 5, 8, 2024, 10, 30};
+    addAppointment(appointments, &count, appt1);
+
+    Appointment appt2 = {"Lunch", 5, 8, 2024, 12, 00};
+    addAppointment(appointments, &count, appt2);
+
+    // Print sorted appointments
+    for (int i = 0; i < count; i++) {
+        printf("Appointment: %s on %d/%d/%d at %d:%d\n",
+            appointments[i].description,
+            appointments[i].day,
+            appointments[i].month,
+            appointments[i].year,
+            appointments[i].hour,
+            appointments[i].minute);
+    }
+
+    return 0;
+}
+ Potential Improvements:
+
+1. Efficiency: Sorting after every addition can be inefficient for large lists. Instead, consider using a data structure that maintains sorted order, like a balanced binary search tree or a priority queue.
+
+2.Scalability: For handling a large number of appointments, you may need a more sophisticated data structure to efficiently handle insertions, deletions, and lookups.
+
+3.Error Handling: Ensure proper validation of input values to handle edge cases, like invalid dates or times.
+
+4.User Interface: If your application has a user interface, consider providing options for users to view or search appointments efficiently.
+
+5.Memory Management: Ensure that memory is managed efficiently, especially if dynamically allocating memory for appointments. 
