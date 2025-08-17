@@ -1,0 +1,173 @@
+///////////////////////////////////////////////////////////////////////////
+                               Reflection
+                             Workshop - #6
+Full Name  : Sahil Hareshbhai Patel
+Student ID#: 173793225
+
+Authenticity Declaration:
+I declare this submission is the result of my own work and has not been
+shared with any other student or 3rd party content provider. This submitted
+piece of work is entirely of my own creation.
+///////////////////////////////////////////////////////////////////////////
+
+
+Answer 1:
+
+
+In part two of your workshop, you have utilized three arrays of the similar size as the elements of the list to contain distinct types of data which are connected to wish list items and they include, cost array for the price of each item, priority array for the order of priorities, and financing array which is for how the said list items can be financed. These arrays are known to as parallel arrays.
+
+Parallel Arrays
+Parallel arrays are several arrays having the same number of elements and the relative elements of the arrays related as near elements. For instance, in your code:For instance, in your code:
+
+double cost[MAXIMUM_ITEMS]; // Array to store the cost of each item
+int imp[MAXIMUM_ITEMS];     // Array to store the priority of each item
+char opt[MAXIMUM_ITEMS];    // Array to store the financing option of each item
+
+Each index i across these arrays holds related information about a specific wish list item:Each index i across these arrays holds related information about a specific wish list item:
+
+Array cost[i] holds the cost information of the i-th item.
+priority is stored in imp[i] where i is the item number.
+opt[i] holds the financing option of the ith item.
+That is why parallel arrays are used.
+Parallel arrays are used for the following reasons:Parallel arrays are used for the following reasons:
+
+Organized Data Management:
+
+They assist in maintaining related portions of data intelligibly and in a most uncomplicated way possible. Lesser array is a collection of values where each index is the key for a single entity (here: a wish list item), and the parallel arrays contain attributes of this entity.
+Simplified Access:
+
+To use is easy and standard for both the collection and manipulating of the data. All the attributes of Entity Class can be accessed with the same index. For instance, when wanting to obtain every detail regarding the third article, you would use the variables cost[2], imp[2], and opt[2].
+Memory Efficiency:
+
+The advantage of paralleled arrays over the utilization of the array of structures is higher memory consumption, and it would be even larger in case the structure occupies separate items of storage, which are oriented to different types of data.
+Easier Iteration:
+
+Working with items through the loop usually does not represent a problem. It is optimum, because all the related data can be processed through one loop.
+Modularity and Readability:
+
+The code can be even more separately organized and easily understandable because each array is devoted to the certain type of information.
+
+
+Answer 2 :
+
+Probably the most suitable construct for iteration is an iteration construct for arrays.
+Out of all the iterating constructions in C, it is best practice to use for loop when dealing with arrays. This is because:
+
+What is particularly advantageous in the for loop is that the initialization, checking of condition and increment/decrement can all be done in one line.
+It is concise to use and gives a good means of traversing through certain elements and this is especially the case when dealing with arrays.
+An example from Your code using for loop is as follows:
+In your code, you used a for loop to iterate over the wish list items and collect their details:In your code, you used a for loop to iterate over the wish list items and collect their details:
+
+// Collect details for each item
+for (int i = 1; i <= item; i++) {
+    printf("Item-%d Details:\n", i);
+    do {
+        printf("   Item cost: $");
+        scanf("%lf", &cost[i]);
+
+        if (cost[i] < MINIMUM_COST) {
+            printf("      ERROR: Cost must be at least $100.00\n");
+        }
+    } while (cost[i] < MINIMUM_COST);
+
+    do {
+        printf("   How important is it to you? [1=must have, 2=important, 3=want]: ");
+        scanf("%d", &imp[i]);
+
+        if (imp[i] < MINIMUM_IMP_ITEMS || imp[i] > MAXIMUM_IMP_ITEMS) {
+            printf("      ERROR: Value must be between 1 and 3\n");
+        }
+    } while (imp[i] < MINIMUM_IMP_ITEMS || imp[i] > MAXIMUM_IMP_ITEMS);
+
+    do {
+        printf("   Does this item have financing options? [y/n]: ");
+        scanf(" %c", &opt[i]);
+
+        if (opt[i] != 'n' && opt[i] != 'y') {
+            printf("      ERROR: Must be a lowercase 'y' or 'n'\n");
+        }
+    } while (opt[i] != 'n' && opt[i] != 'y');
+    printf("\n");
+}
+
+
+If i re code the same thing with while loop:
+
+int i = 1;
+while (i <= item) {
+    printf("Item-%d Details:\n", i);
+    do {
+        printf("   Item cost: $");
+        scanf("%lf", &cost[i]);
+
+        if (cost[i] < MINIMUM_COST) {
+            printf("      ERROR: Cost must be at least $100.00\n");
+        }
+    } while (cost[i] < MINIMUM_COST);
+
+    do {
+        printf("   How important is it to you? [1=must have, 2=important, 3=want]: ");
+        scanf("%d", &imp[i]);
+
+        if (imp[i] < MINIMUM_IMP_ITEMS || imp[i] > MAXIMUM_IMP_ITEMS) {
+            printf("      ERROR: Value must be between 1 and 3\n");
+        }
+    } while (imp[i] < MINIMUM_IMP_ITEMS || imp[i] > MAXIMUM_IMP_ITEMS);
+
+    do {
+        printf("   Does this item have financing options? [y/n]: ");
+        scanf(" %c", &opt[i]);
+
+        if (opt[i] != 'n' && opt[i] != 'y') {
+            printf("      ERROR: Must be a lowercase 'y' or 'n'\n");
+        }
+    } while (opt[i] != 'n' && opt[i] != 'y');
+    printf("\n");
+    i++;
+}
+
+
+
+Summary of Findings
+for Loop:
+
+Advantages:
+Consise initialization of variable, check of the condition, and increment in one line of code.
+Simple and short for using with a bounded for loop.
+Usage: Most appropriate when the iterations to be made are known ahead of time.
+while Loop:
+
+Advantages:
+Pronouncedly freer in terms of the conditions chosen for iteration.
+The client is particularly useful when the number of iterations to achieve the optimal complex solution is not defined.
+Disadvantages:
+Different line for initialization and line for increment which make it not as succinct as the for loop.
+Conclusion
+The for loop is more preferable for arrays because it has more concise and easy to read statements for the loop control variable. The while loop, as more versatile, is slightly longer in this case but serves the purpose necessary for the code’s proper function. Hence, for traversing the arrays whose size is predetermined, the for loop comes out to be the most suitable.
+
+
+Answer 3:
+
+To test and debug the provided C program, I would follow these steps:To test and debug the provided C program, I would follow these steps:
+
+Compiler Warnings and Errors: First, I would try to link the program using C compiler and look for the errors / warning that C compiler has produced. The syntax errors that are for example the missing semicolon marks, unbalanced braces, or undeclared variables would have to be corrected in order to continue with the work.
+Visual Inspection: Next, perhaps to ensure that there are no semantic errors or other logical problems with the code, I would scan all the code written. It entails time consuming analysis of the flow of the code, the variable declaration and initialization, loop conditions, and branch statements.
+Test Cases: Test cases have to be developed and run as I would ensure that indeed the program meets the intended functionality. These test cases would ensure what could be referred to as boundary test cases such as testing on lower limit and upper limit for instance the Income, no of items, cost, priority and other impossible test cases such as negative figures and where characters have been input instead of figures.
+
+For instance, I would feed the program with inputs of different values of income ranging from smallest possible value, that surely falls within the specified range ($500. 00), largest possible value, which is also in the range($400, 000. 00,) and outside the range ($499. 99 & $400,000. 01) so as to determine whether the program accepts the values that are not valid.
+I would also try adding different numbers of wish list items as the documentation says that the input should be between one and ten numbers, and I would also try entering 0 numbers, and 11 numbers to check the response of the program.
+Furthermore, I would use variations of item costs and priority levels and their financing in order to validate the parameters of the forecasting calculations.
+
+
+Print Statements and Debugging: If any mistake or unwanted work occurs during testing then I would place printf statements those are debugging points used in the code to witness the value of different variables and to glance at the working style of the program. This would assist me to see where precisely the program is not running as it is supposed to and where I should begin from.
+
+Debugger: There is when there is any more complicated situation or question, which is not explained in the print statements, I would write a debugger. It enables me to go through each of the statements that have to be executed for the control to reach the debugger statement so that I can see the value of a particular variable and set a breakpoint that halts the running of a program thus allows me to check the value of a variable.
+
+Divide and Conquer: If I meet a complex problem, I would analyze the problem in to sub-problems and solve one part at a time. Such a strategy more effectively helps in subdividing the issue and will make it easier to tackle the problem at the source.
+Code Review: Last of all, I can ask some colleagues or peers to help me by providing them the code and explaining them about the observed problems. Opinions from others and code reviews could help to reveal issues or see solutions that I might have missed.
+
+During the testing and debugging, I would write down in details any problem faced, measures that was taken to solve the problem besides other changes made to the code. This documentation would prove most beneficial when the time comes for program maintenance or in case of further improvements to the program.
+
+
+
+
