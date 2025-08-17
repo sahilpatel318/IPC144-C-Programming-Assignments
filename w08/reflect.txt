@@ -1,0 +1,49 @@
+///////////////////////////////////////////////////////////////////////////
+                               Reflection
+                             Workshop - #8
+Full Name  : SAHIL HARESHBHAI PATEL
+Student ID#: 173793225
+
+Authenticity Declaration:
+I declare this submission is the result of my own work and has not been
+shared with any other student or 3rd party content provider. This submitted
+piece of work is entirely of my own creation.
+///////////////////////////////////////////////////////////////////////////
+
+Answer 1:
+
+The convertLbsKg function is used to directly assign the converted value (from pounds to kilograms) to the function’s return value. It also returns the value if the pointer argument is not NULL through the pointer part of the parameter. This type of dual return strategy serves the function to return the result both with the help of the function return mechanism and changing the value of the variable being referenced by the pointer.
+
+Here’s the original function prototype:
+
+double convertLbsKg(const double* valueInLbs, double* valueInKg);
+To revise this function and split it into two separate functions, the prototypes would be:
+
+Function that returns the converted value directly:
+
+double convertLbsToKg(double valueInLbs);
+Function that uses a pointer to return the converted value:
+
+
+void convertLbsToKgWithPointer(const double* valueInLbs, double* valueInKg);
+
+
+Answer 2
+
+Highly Cohesive Functions: 
+ 
+ getIntPositive(int*) and getDoublePositive(double*): This following functions are very cohesive as they are primarily built to check if the input from the user is a positive number. Since they are single-responsibility classes, they are quite simple to comprehend and work on. 
+ convertLbsKg(const double*, double*) and convertLbsG(const double*, int*): These functions specifically convert, pounds to kilograms and grams respectively on the entered value. Hence, cohesiveness of the set of units is rooted in the fact that they work as a united team only in terms of the defined task of conversion. 
+ Loosely Coupled Functions: 
+ 
+ displayCatFoodHeader() and displayCatFoodData(int, double*, double*, int): These functions are coupled with a keen interest due to the fact that the only thing that is done in the functions, is the displaying of data. They are not reliant on the processes that occur within other functions and only need the data to be provided to them. 
+ calculateCostPerServing(const double*, const double*, double*) and calculateCostPerCal(const double*, const int*, double*): This means that the functions are loosely coupled as they independently perform calculation based on the input parameters. They do not directly depend upon the state of the overall program; thereby they are reusable entities. 
+
+
+Answer 3
+
+Working with a separate header file (w8p2. h) and source file (w8p2. c) gives a clear vision of the interface and the implementation part of the functions. This kind of design enhances the order of codes in the system and also enhances the readability of the codes. The header file includes the function prototypes, structure definitions, and constants; these are specifications of what the functions do without actually explaining how they’re done. Any function can be easily seen in relation to the complete picture hence learning the general view of the functionality. 
+ 
+ For instance, the prototypes in the header file (w8p2. h) such as double convertLbsKg(const double*, double*) ; give an indication of what the function is supposed to do, but the actual details as to how this is going to be accomplished are not apparent, and can only be found in the source file (w8p2. c). This also helps in modularity in that parts of it can be created and tested in isolation from the rest of the program. 
+ 
+ Also, it explores an approach that improves the maintainability of a system. It has been observed that when there occurs modification in a function then it is required only in the file of its implementation and not in the code where this function has been invoked and where it has been defined as per the information made available in the header files. For instance, if action comes to alter the function of calculateReportData, then only the source file has to be changed; the rest of the program remains as long as the specifications of the function have not changed.
